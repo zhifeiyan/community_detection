@@ -1,6 +1,6 @@
 //
-// admm.h
-// last update 05_30_2015
+// gvadmm.cpp
+// created by Zhifei Yan
 //
 
 #ifndef __GVADMM_H

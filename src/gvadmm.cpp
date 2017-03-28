@@ -1,3 +1,8 @@
+//
+// gvadmm.cpp
+// created by Zhifei Yan
+//
+
 #include "gvadmm.h"
 #include <RcppArmadillo.h>
 #include <cmath>
@@ -9,22 +14,22 @@ int gvadmm(const mat& input, mat& z, mat& y, mat& u, mat& v, const int& n,
          const double& tolerance) {
 
   int niter;
-	double rr, ss, tt, ww;
-	uword num_neg;
-	vec eigval(n);
-	mat eigvec(n, n);
+  double rr, ss, tt, ww;
+  uword num_neg;
+  vec eigval(n);
+  mat eigvec(n, n);
 
-	mat x(n, n), y_old(n, n), z_old(n, n);
-	
-	double sum_diag, sum_all;
+  mat x(n, n), y_old(n, n), z_old(n, n);
+  
+  double sum_diag, sum_all;
 
-	for(niter = 0; niter < maxiter; niter++) {
-		// Store previous value of y and z
+  for(niter = 0; niter < maxiter; niter++) {
+    // Store previous value of y and z
     y_old = y;
-		z_old = z;
+    z_old = z;
 
-		// Projection onto the affine set
-		x = 0.5 * (y + z - u - v + (input / admm_penalty));
+    // Projection onto the affine set
+    x = 0.5 * (y + z - u - v + (input / admm_penalty));
 
     sum_diag = sum(x.diag());
     sum_all = accu(x);
@@ -33,20 +38,20 @@ int gvadmm(const mat& input, mat& z, mat& y, mat& u, mat& v, const int& n,
                   (std::pow(n, 2) - n));
     x -= (sum_diag - n - sum_all + lambda) / (n - std::pow(n, 2));
 
-		// Projection onto the PSD cone
-		y = x + v;
-		eig_sym(eigval, eigvec, y);
-		num_neg = sum(eigval < 0);
+    // Projection onto the PSD cone
+    y = x + v;
+    eig_sym(eigval, eigvec, y);
+    num_neg = sum(eigval < 0);
 
-		// Reconstruct 
-		if(num_neg == n) {
-		  y.zeros();
-		} else {
-			y = (
-			  eigvec.cols(num_neg, n - 1) * 
-			  diagmat(eigval.subvec(num_neg, n - 1)) * 
-			  eigvec.cols(num_neg, n - 1).t()
-			);
+    // Reconstruct 
+    if(num_neg == n) {
+      y.zeros();
+    } else {
+      y = (
+        eigvec.cols(num_neg, n - 1) * 
+        diagmat(eigval.subvec(num_neg, n - 1)) * 
+        eigvec.cols(num_neg, n - 1).t()
+      );
     }
 
     // Projection onto the non-negative cone

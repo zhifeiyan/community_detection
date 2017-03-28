@@ -1,6 +1,6 @@
 //
-// admm.h
-// last update 01_12_2016
+// cladmm.h
+// created by Zhifei Yan
 //
 
 #ifndef __CLADMM_H

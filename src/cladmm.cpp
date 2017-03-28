@@ -1,3 +1,8 @@
+//
+// cladmm.cpp
+// created by Zhifei Yan
+//
+
 #include "cladmm.h"
 #include <RcppArmadillo.h>
 #include <cmath>
@@ -7,33 +12,31 @@ using namespace arma;
 int cladmm(const mat& input, mat& z, mat& u, const int& n, 
            const double& admm_penalty, int maxiter, 
            const double& tolerance) {
-
   int niter;
-	double rr, ss;
-	uword num_neg;
-	vec eigval(n);
-	mat eigvec(n, n);
+  double rr, ss;
+  uword num_neg;
+  vec eigval(n);
+  mat eigvec(n, n);
+  mat y(n, n), z_old(n, n);
 
-	mat y(n, n), z_old(n, n);
+  for(niter = 0; niter < maxiter; niter++) {
+    // Store previous value of z
+    z_old = z;
 
-	for(niter = 0; niter < maxiter; niter++) {
-		// Store previous value of z
-		z_old = z;
+    // Projection onto the PSD cone
+    y = z - u - input / admm_penalty;
+    eig_sym(eigval, eigvec, y);
+    num_neg = sum(eigval < 0);
 
-		// Projection onto the PSD cone
-		y = z - u - input / admm_penalty;
-		eig_sym(eigval, eigvec, y);
-		num_neg = sum(eigval < 0);
-
-		// Reconstruct 
-		if(num_neg == n) {
-		  y.zeros();
-		} else {
-			y = (
-			  eigvec.cols(num_neg, n - 1) * 
-			  diagmat(eigval.subvec(num_neg, n - 1)) * 
-			  eigvec.cols(num_neg, n - 1).t()
-			);
+    // Reconstruct 
+    if(num_neg == n) {
+      y.zeros();
+    } else {
+      y = (
+        eigvec.cols(num_neg, n - 1) * 
+        diagmat(eigval.subvec(num_neg, n - 1)) * 
+        eigvec.cols(num_neg, n - 1).t()
+      );
     }
 
     // Projection onto the elementwise 0 to 1 bound
