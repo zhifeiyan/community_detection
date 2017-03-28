@@ -1,1 +1,1 @@
-An R package that contains SDP methods and spectral methods for community detection proposed by other researchers
+An R package implementation of state-of-the-art SDP methods and spectral methods for community detection proposed by other researchers.
