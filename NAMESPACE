@@ -2,6 +2,7 @@
 
 export(sdp_caili)
 export(sdp_gv)
+export(sdp_mm)
 export(rsc)
 export(adjsc)
 import(RcppArmadillo)

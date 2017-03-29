@@ -25,7 +25,7 @@ A list containing SDP results
 }
 \description{
 This function computes a solution path of SDP-GV
-under a sequence of values of tuning paramter lambda
-(see COMMUNITY DETECTION IN SPARSE NETWORKS VIA GROTHENDIECK’S INEQUALITY by OLIVIER GUE ́DON AND ROMAN VERSHYNIN)
+under a sequence of values of tuning parameter lambda
+(see COMMUNITY DETECTION IN SPARSE NETWORKS VIA GROTHENDIECK’S INEQUALITY by OLIVIER GUEDON AND ROMAN VERSHYNIN)
 }
 

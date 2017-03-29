@@ -4,7 +4,7 @@
 #' SDP-CL method
 #'
 #' This function computes a solution path of SDP-CL 
-#' under a sequence of values of tuning paramter lambda
+#' under a sequence of values of tuning parameter lambda
 #' (see ROBUST AND COMPUTATIONALLY FEASIBLE COMMUNITY DETECTION IN THE PRESENCE OF ARBITRARY OUTLIER NODES by T. Tony Cai and Xiaodong Li)
 #'
 #' @param S Input symmetric matrix
@@ -22,8 +22,8 @@ sdp_caili <- function(S, lambda = as.numeric( c()), maxiter = 1e6L, tolerance = 
 #' SDP-GV method
 #'
 #' This function computes a solution path of SDP-GV
-#' under a sequence of values of tuning paramter lambda
-#' (see COMMUNITY DETECTION IN SPARSE NETWORKS VIA GROTHENDIECK’S INEQUALITY by OLIVIER GUE ́DON AND ROMAN VERSHYNIN)
+#' under a sequence of values of tuning parameter lambda
+#' (see COMMUNITY DETECTION IN SPARSE NETWORKS VIA GROTHENDIECK’S INEQUALITY by OLIVIER GUEDON AND ROMAN VERSHYNIN)
 #'
 #' @param S Input symmetric matrix
 #' @param lambda Vector of possible values of SDP tuning parameter
@@ -35,5 +35,24 @@ sdp_caili <- function(S, lambda = as.numeric( c()), maxiter = 1e6L, tolerance = 
 #' @export
 sdp_gv <- function(S, lambda = as.numeric( c()), maxiter = 1e6L, tolerance = 1e-2, admm_penalty = 100.0, verbose = 0L) {
     .Call('methodcombo_sdp_gv', PACKAGE = 'methodcombo', S, lambda, maxiter, tolerance, admm_penalty, verbose)
+}
+
+#' SDP-MM method (convexified modularity maximization)
+#'
+#' This function computes a solution path of SDP-MM
+#' under a sequence of values of tuning parameter lambda
+#' (see Convexified Modularity Maximization for Degree-corrected Stochastic 
+#' Block Models by Yudong Chen,  Xiaodong Li, and Jiaming Xu for details)
+#'
+#' @param S Input symmetric matrix
+#' @param lambda Vector of possible values of SDP tuning parameter
+#' @param maxiter Max number of iteration
+#' @param tolerance ADMM tolerance
+#' @param admm_penalty ADMM penalty parameter
+#' @param verbose Level of verbosity
+#' @return A list containing SDP results
+#' @export
+sdp_mm <- function(S, lambda = as.numeric( c()), maxiter = 1e6L, tolerance = 1e-2, admm_penalty = 1, verbose = 0L) {
+    .Call('methodcombo_sdp_mm', PACKAGE = 'methodcombo', S, lambda, maxiter, tolerance, admm_penalty, verbose)
 }
 

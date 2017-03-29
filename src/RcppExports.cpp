@@ -38,3 +38,19 @@ BEGIN_RCPP
     return __result;
 END_RCPP
 }
+// sdp_mm
+List sdp_mm(NumericMatrix S, NumericVector lambda, int maxiter, double tolerance, double admm_penalty, int verbose);
+RcppExport SEXP methodcombo_sdp_mm(SEXP SSEXP, SEXP lambdaSEXP, SEXP maxiterSEXP, SEXP toleranceSEXP, SEXP admm_penaltySEXP, SEXP verboseSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< NumericMatrix >::type S(SSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type lambda(lambdaSEXP);
+    Rcpp::traits::input_parameter< int >::type maxiter(maxiterSEXP);
+    Rcpp::traits::input_parameter< double >::type tolerance(toleranceSEXP);
+    Rcpp::traits::input_parameter< double >::type admm_penalty(admm_penaltySEXP);
+    Rcpp::traits::input_parameter< int >::type verbose(verboseSEXP);
+    __result = Rcpp::wrap(sdp_mm(S, lambda, maxiter, tolerance, admm_penalty, verbose));
+    return __result;
+END_RCPP
+}
