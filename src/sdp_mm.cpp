@@ -28,8 +28,8 @@ using namespace arma;
 //' @export
 // [[Rcpp::export]]
 List sdp_mm(NumericMatrix S, NumericVector lambda = NumericVector::create(),
-            int maxiter = 1e6, double tolerance = 1e-2,
-            double admm_penalty = 1, int verbose = 0) {
+            int maxiter = 1e2, double tolerance = 1e-2,
+            double admm_penalty = 1.0, int verbose = 0) {
 
   // Sanity checks
   if(S.nrow() < 2) stop("Expected S to be a matrix");

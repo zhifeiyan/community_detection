@@ -15,7 +15,7 @@
 #' @param verbose Level of verbosity
 #' @return A list containing SDP results
 #' @export
-sdp_caili <- function(S, lambda = as.numeric( c()), maxiter = 1e6L, tolerance = 1e-2, admm_penalty = 100.0, verbose = 0L) {
+sdp_caili <- function(S, lambda = as.numeric( c()), maxiter = 1e2L, tolerance = 1e-2, admm_penalty = 1.0, verbose = 0L) {
     .Call('methodcombo_sdp_caili', PACKAGE = 'methodcombo', S, lambda, maxiter, tolerance, admm_penalty, verbose)
 }
 
@@ -33,7 +33,7 @@ sdp_caili <- function(S, lambda = as.numeric( c()), maxiter = 1e6L, tolerance = 
 #' @param verbose Level of verbosity
 #' @return A list containing SDP results
 #' @export
-sdp_gv <- function(S, lambda = as.numeric( c()), maxiter = 1e6L, tolerance = 1e-2, admm_penalty = 100.0, verbose = 0L) {
+sdp_gv <- function(S, lambda = as.numeric( c()), maxiter = 1e2L, tolerance = 1e-2, admm_penalty = 1.0, verbose = 0L) {
     .Call('methodcombo_sdp_gv', PACKAGE = 'methodcombo', S, lambda, maxiter, tolerance, admm_penalty, verbose)
 }
 
@@ -52,7 +52,7 @@ sdp_gv <- function(S, lambda = as.numeric( c()), maxiter = 1e6L, tolerance = 1e-
 #' @param verbose Level of verbosity
 #' @return A list containing SDP results
 #' @export
-sdp_mm <- function(S, lambda = as.numeric( c()), maxiter = 1e6L, tolerance = 1e-2, admm_penalty = 1, verbose = 0L) {
+sdp_mm <- function(S, lambda = as.numeric( c()), maxiter = 1e2L, tolerance = 1e-2, admm_penalty = 1.0, verbose = 0L) {
     .Call('methodcombo_sdp_mm', PACKAGE = 'methodcombo', S, lambda, maxiter, tolerance, admm_penalty, verbose)
 }
 

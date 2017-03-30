@@ -5,9 +5,11 @@
 #' See paper "PSEUDO-LIKELIHOOD METHODS FOR COMMUNITY DETECTION IN LARGE SPARSE NETWORKS" by ARASH A. AMINI, AIYOU CHEN, PETER J. BICKEL AND ELIZAVETA LEVINA for details"
 #'
 #' @export
-rsc <- function(adj, n, nclust, const = 0.25,
+rsc <- function(adj, nclust, const = 0.25,
                 kmeans_iter = 1e3, kmeans_rep = 1e2){
+  if (sum(adj) == 0) stop('The graph has no edge')
   # Adjust adjacency matrix
+  n <- nrow(adj)
   adj <- adj + const * sum(adj) / n^2
   d <- rowSums(adj)^(-0.5)
   lap <- sweep(adj, 1, d, '*')

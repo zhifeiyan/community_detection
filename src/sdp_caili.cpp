@@ -27,8 +27,8 @@ using namespace arma;
 //' @export
 // [[Rcpp::export]]
 List sdp_caili(NumericMatrix S, NumericVector lambda = NumericVector::create(),
-               int maxiter = 1e6, double tolerance = 1e-2,
-               double admm_penalty = 100.0, int verbose = 0) {
+               int maxiter = 1e2, double tolerance = 1e-2,
+               double admm_penalty = 1.0, int verbose = 0) {
 
   // Sanity checks
   if(S.nrow() < 2) stop("Expected S to be a matrix");
@@ -64,9 +64,8 @@ List sdp_caili(NumericMatrix S, NumericVector lambda = NumericVector::create(),
     if(verbose > 0) Rcout << ".";
 
     // Generate input matrix of SDP using current value of lambda
-    // input matrix = - adj + lambda (E - I)
+    // input matrix = - adj + lambda * E
     input = -_S + lambda(i);
-    input.diag() -= lambda(i);
 
     // ADMM
     niter[i] = cladmm(input, z, u, ndim, admm_penalty, maxiter, tolerance);

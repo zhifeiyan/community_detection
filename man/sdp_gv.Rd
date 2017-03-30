@@ -4,8 +4,8 @@
 \alias{sdp_gv}
 \title{SDP-GV method}
 \usage{
-sdp_gv(S, lambda = as.numeric(c()), maxiter = 1000000L, tolerance = 0.01,
-  admm_penalty = 100, verbose = 0L)
+sdp_gv(S, lambda = as.numeric(c()), maxiter = 100L, tolerance = 0.01,
+  admm_penalty = 1, verbose = 0L)
 }
 \arguments{
 \item{S}{Input symmetric matrix}

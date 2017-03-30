@@ -4,7 +4,7 @@
 \alias{sdp_mm}
 \title{SDP-MM method (convexified modularity maximization)}
 \usage{
-sdp_mm(S, lambda = as.numeric(c()), maxiter = 1000000L, tolerance = 0.01,
+sdp_mm(S, lambda = as.numeric(c()), maxiter = 100L, tolerance = 0.01,
   admm_penalty = 1, verbose = 0L)
 }
 \arguments{

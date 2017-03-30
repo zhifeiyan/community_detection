@@ -4,7 +4,7 @@
 \alias{rsc}
 \title{Regularized spectral clustering}
 \usage{
-rsc(adj, n, nclust, const = 0.25, kmeans_iter = 1000, kmeans_rep = 100)
+rsc(adj, nclust, const = 0.25, kmeans_iter = 1000, kmeans_rep = 100)
 }
 \description{
 Regularized spectral clustering where entries of the
