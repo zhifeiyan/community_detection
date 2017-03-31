@@ -6,6 +6,23 @@
 
 using namespace Rcpp;
 
+// bfclust_addmin
+List bfclust_addmin(NumericMatrix S, int mmin, IntegerVector nclust, int maxiter, double tolerance, double admm_penalty, int verbose);
+RcppExport SEXP methodcombo_bfclust_addmin(SEXP SSEXP, SEXP mminSEXP, SEXP nclustSEXP, SEXP maxiterSEXP, SEXP toleranceSEXP, SEXP admm_penaltySEXP, SEXP verboseSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< NumericMatrix >::type S(SSEXP);
+    Rcpp::traits::input_parameter< int >::type mmin(mminSEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type nclust(nclustSEXP);
+    Rcpp::traits::input_parameter< int >::type maxiter(maxiterSEXP);
+    Rcpp::traits::input_parameter< double >::type tolerance(toleranceSEXP);
+    Rcpp::traits::input_parameter< double >::type admm_penalty(admm_penaltySEXP);
+    Rcpp::traits::input_parameter< int >::type verbose(verboseSEXP);
+    __result = Rcpp::wrap(bfclust_addmin(S, mmin, nclust, maxiter, tolerance, admm_penalty, verbose));
+    return __result;
+END_RCPP
+}
 // sdp_caili
 List sdp_caili(NumericMatrix S, NumericVector lambda, int maxiter, double tolerance, double admm_penalty, int verbose);
 RcppExport SEXP methodcombo_sdp_caili(SEXP SSEXP, SEXP lambdaSEXP, SEXP maxiterSEXP, SEXP toleranceSEXP, SEXP admm_penaltySEXP, SEXP verboseSEXP) {
