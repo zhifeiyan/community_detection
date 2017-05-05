@@ -16,6 +16,10 @@ bfclust_addmin <- function(S, mmin, nclust = as.integer( c()), maxiter = 1e2L, t
     .Call('methodcombo_bfclust_addmin', PACKAGE = 'methodcombo', S, mmin, nclust, maxiter, tolerance, admm_penalty, verbose)
 }
 
+compute_dist_nbs <- function(A) {
+    .Call('methodcombo_compute_dist_nbs', PACKAGE = 'methodcombo', A)
+}
+
 #' SDP-CL method
 #'
 #' This function computes a solution path of SDP-CL 

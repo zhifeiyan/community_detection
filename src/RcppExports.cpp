@@ -23,6 +23,17 @@ BEGIN_RCPP
     return __result;
 END_RCPP
 }
+// compute_dist_nbs
+arma::mat compute_dist_nbs(arma::mat A);
+RcppExport SEXP methodcombo_compute_dist_nbs(SEXP ASEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< arma::mat >::type A(ASEXP);
+    __result = Rcpp::wrap(compute_dist_nbs(A));
+    return __result;
+END_RCPP
+}
 // sdp_caili
 List sdp_caili(NumericMatrix S, NumericVector lambda, int maxiter, double tolerance, double admm_penalty, int verbose);
 RcppExport SEXP methodcombo_sdp_caili(SEXP SSEXP, SEXP lambdaSEXP, SEXP maxiterSEXP, SEXP toleranceSEXP, SEXP admm_penaltySEXP, SEXP verboseSEXP) {
