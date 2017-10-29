@@ -9,4 +9,3 @@ adjsc(adj, nclust, kmeans_iter = 1000, kmeans_rep = 100)
 \description{
 For details, see paper "CONSISTENCY OF SPECTRAL CLUSTERING IN STOCHASTIC BLOCK MODELS" by Jing Lei and Alessandro Rinaldo
 }
-

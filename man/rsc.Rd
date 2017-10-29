@@ -11,4 +11,3 @@ Regularized spectral clustering where entries of the
 adjacency matrix are inflated by a constant small number. 
 See paper "PSEUDO-LIKELIHOOD METHODS FOR COMMUNITY DETECTION IN LARGE SPARSE NETWORKS" by ARASH A. AMINI, AIYOU CHEN, PETER J. BICKEL AND ELIZAVETA LEVINA for details"
 }
-

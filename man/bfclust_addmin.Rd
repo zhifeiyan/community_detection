@@ -28,4 +28,3 @@ A list containing SDP results
 \description{
 SDP-bf adding an entry upper bound constraint
 }
-

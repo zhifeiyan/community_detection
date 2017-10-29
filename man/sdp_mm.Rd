@@ -29,4 +29,3 @@ under a sequence of values of tuning parameter lambda
 (see Convexified Modularity Maximization for Degree-corrected Stochastic 
 Block Models by Yudong Chen,  Xiaodong Li, and Jiaming Xu for details)
 }
-

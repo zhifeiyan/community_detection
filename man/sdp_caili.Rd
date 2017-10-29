@@ -28,4 +28,3 @@ This function computes a solution path of SDP-CL
 under a sequence of values of tuning parameter lambda
 (see ROBUST AND COMPUTATIONALLY FEASIBLE COMMUNITY DETECTION IN THE PRESENCE OF ARBITRARY OUTLIER NODES by T. Tony Cai and Xiaodong Li)
 }
-
